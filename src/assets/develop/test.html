@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+    div {
+        /* background: red; */
+        /* width: 10; */
+        height: 125px;
+    }
+    </style>
+</head>
+
+<body>
+    <div id="bm"></div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bodymovin/4.13.0/bodymovin.js"></script>
+    <script>
+        var animation = bodymovin.loadAnimation({
+            container: document.getElementById('bm'),
+            renderer: 'svg',
+            autoplay: true,
+            loop: true,
+            path: 'data.json'
+        });
+    </script>
+</body>
+
+</html>

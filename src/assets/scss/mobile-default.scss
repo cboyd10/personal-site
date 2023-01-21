@@ -1,0 +1,346 @@
+body {
+  position: relative;
+  font-family: $primary-font;
+  color: $secondary-color;
+  background-color: #fafafa;
+}
+
+/* Collapsible Navigation */
+
+.collapsed-nav {
+  margin: 0;
+  height: 100%;
+  width: 0;
+  position: fixed;
+  z-index: 5;
+  top: 0;
+  right: 0%;
+  background: #333;
+  opacity: 0.99;
+  overflow-x: hidden;
+  text-align: right;
+  font-size: 20px;
+  transition: 0.25s ease-in-out;
+  a {
+    display: inline-block;
+    width: 100%;
+    color: $primary-color;
+    text-decoration: none;
+    padding-top: 20px;
+    font-weight: 300;
+  }
+  .close-nav-btn {
+    color: $primary-color;
+    font-size: 50px;
+    padding-top: 7px;
+  }
+} // end collpased-nav
+
+/* Header */
+
+header {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  min-height: 470px;
+  // overflow-x: hidden;
+  background: $primary-gradient, $bg-img;
+  background-position: center;
+  background-size: cover;
+  clip-path: polygon(0 0, 100% 0, 100% 70%, 0 80%);
+  #logo {
+    display: inline-block;
+    margin: 3.52vh 0 0 6.25vw;
+    width: 124px;
+  } // end logo
+  #open-nav-btn {
+    background: transparent;
+    border: none;
+    padding: 0;
+    width: 37.5px;
+    position: absolute;
+    top: 2.55vh;
+    right: 6.25vw;
+    img {
+      width: 100%;
+    }
+  } // end open-nav-btn
+  #design-hero-text {
+    width: 225px;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+    margin-top: 15vh;
+  } // end design-hero-text
+  .type-wrapper {
+    width: 60%;
+    height: auto;
+    margin: 0 auto;
+    text-align: center;
+
+    @media only screen and (max-width: 370px) {
+      width: 70%;
+    }
+  }
+  #type {
+    font-family: $ternary-font;
+    font-size: 52px;
+    font-weight: $light-font;
+    color: $primary-color;
+  } // end type
+  .typed-cursor {
+    opacity: 1;
+    animation: showCursor 6.6s, blink 1s infinite 6.5s;
+    font-size: 52px;
+    font-family: $ternary-font;
+    color: $primary-color;
+  } // end typed-cursor (TypedJS)
+  .navbar {
+    display: none;
+  }
+} // end header
+#scroll-btn {
+  display: inline-block;
+  position: absolute;
+  top: 22%;
+  left: 50vw;
+  transform: translate(-50%);
+} // end scroll-btn
+
+/* Main */
+
+main {
+  width: calc(100% - 30vw);
+  text-align: center;
+  font-size: 0.8rem;
+  line-height: 32px;
+  padding: 0 15vw;
+  #content-start {
+    scroll-behavior: smooth;
+  }
+  .container:first-of-type {
+    height: 60vh;
+    min-height: 425px;
+    // visibility: hidden;
+    position: relative;
+    div {
+      width: 100% !important;
+      // height: 125px;
+      position: absolute;
+      top: -35%;
+      left: 0;
+      z-index: 2;
+    }
+  }
+  .container:nth-of-type(2) {
+    // visibility: hidden;
+    padding-top: 15vh;
+    position: relative;
+    div {
+      width: 90% !important;
+      // height: 125px;
+      position: absolute;
+      top: -15%;
+      left: 8%;
+      z-index: 2;
+    }
+  }
+  img {
+    width: 100%;
+  }
+  h1 {
+    width: 100%;
+    font-size: 1.5rem;
+    font-family: $ternary-font;
+    font-weight: $normal-font;
+    margin: 4vh 0 2vh 0;
+  }
+  #design-content-title {
+    font-family: $secondary-font;
+  }
+  p {
+    margin-top: 1em;
+    font-family: "Noto Sans", sans-serif;
+    color: #777;
+  }
+} // end main
+
+/* Footer */
+
+footer {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  text-align: center;
+  background: $primary-gradient;
+  clip-path: polygon(0 30%, 100% 20%, 100% 100%, 0 100%);
+  h1 {
+    width: 100%;
+    font-family: $secondary-font;
+    font-size: 3em;
+    color: $primary-color;
+    padding-top: 40vh;
+  }
+  #contact-btn {
+    font-size: 0.75em;
+    font-weight: $bold-font;
+    color: $primary-color;
+    text-transform: uppercase;
+    text-decoration: none;
+    background: $secondary-color;
+    padding: 1.25em 1.5em;
+    display: inline-block;
+    margin-top: 6vh;
+    border-radius: 0.3em;
+    transition: all 0.25s ease-in-out;
+  }
+  #contact-btn:hover {
+    background: $primary-color;
+    color: $secondary-color;
+    border: 2px solid $secondary-color;
+    font-size: 0.85em;
+  }
+  .social {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-top: 8em;
+    a {
+      text-decoration: none;
+
+      svg {
+        width: 50px;
+        transition: all 0.2s ease-in-out;
+      }
+      svg:hover {
+        width: 60px;
+        height: 60px;
+        fill: $primary-color;
+      }
+    }
+  }
+  #copyright {
+    width: 100%;
+    position: absolute;
+    bottom: 2%;
+    left: 50%;
+    transform: translateX(-50%);
+    color: $primary-color;
+    font-size: 12px;
+    font-family: $primary-font;
+  }
+} // end footer
+
+/* Animations */
+
+@keyframes showCursor {
+  0% {
+    opacity: 0;
+  }
+  90% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes blink {
+  from,
+  to {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+}
+
+@keyframes design-handwritten {
+  100% {
+    stroke-dashoffset: 0;
+  }
+}
+
+#d_path {
+  stroke-dasharray: 500;
+  stroke-dashoffset: 500;
+  stroke-width: 2px;
+  animation: design-handwritten 8s linear forwards;
+}
+
+#e_path {
+  stroke-dasharray: 500;
+  stroke-dashoffset: 500;
+  stroke-width: 2px;
+  animation: design-handwritten 12s linear forwards 0.7s;
+}
+
+#s_path {
+  stroke-dasharray: 500;
+  stroke-dashoffset: 500;
+  stroke-width: 2px;
+  animation: design-handwritten 4.5s ease-in-out forwards 1.4s;
+}
+
+#i_path1 {
+  stroke-dasharray: 500;
+  stroke-dashoffset: 500;
+  stroke-width: 2px;
+  animation: design-handwritten 3s ease-in forwards 2.1s;
+}
+
+#i_path2 {
+  stroke-dasharray: 500;
+  stroke-dashoffset: 500;
+  stroke-width: 2px;
+  animation: design-handwritten 5s ease-in forwards 2.5s;
+}
+
+#g_path {
+  stroke-dasharray: 500;
+  stroke-dashoffset: 500;
+  stroke-width: 2px;
+  animation: design-handwritten 3.5s ease-in forwards 3s;
+}
+
+#n_path {
+  stroke-dasharray: 500;
+  stroke-dashoffset: 500;
+  stroke-width: 2px;
+  animation: design-handwritten 3.5s ease-in-out forwards 3.75s;
+}
+
+#amp_path1 {
+  stroke-dasharray: 500;
+  stroke-dashoffset: 500;
+  stroke-width: 2px;
+  animation: design-handwritten 5s ease-in forwards 4.5s;
+}
+
+#amp_path2 {
+  stroke-dasharray: 500;
+  stroke-dashoffset: 500;
+  stroke-width: 2px;
+  animation: design-handwritten 5s ease-in forwards 5.5s;
+} // end animations
+
+/* Clearfix: Force an Element not to collpase */
+
+.clearfix:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+// Font Resizings & Touch ups
+@media only screen and (min-width: 414px) {
+  // html {
+  //     font-size: 1.25em;
+  // }
+  footer .social {
+    margin-top: 8em;
+  }
+}
+
+@import "contact/contact-mobile";
+@import "about/about-mobile";

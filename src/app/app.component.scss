@@ -1,0 +1,63 @@
+.social-btn {
+  margin: 0 0.2em;
+}
+
+.typewriter {
+  #type {
+    color: white;
+    height: 110%;
+    font-family: "Source Code Pro";
+    font-weight: 300;
+    overflow: hidden; /* Ensures the content is not revealed until the animation */
+    border-right: 0.08em solid white; /* The typwriter cursor */
+    white-space: nowrap; /* Keeps the content on a single line */
+    margin: 0 auto; /* Gives that scrolling effect as the typing happens */
+    padding-right: 0.1em;
+    animation: no-width 6.1s step-end, typing 1.8s steps(12, end) 6.1s,
+      blink-caret 1.2s ease-in-out 6s infinite, full-width 3s forwards 7.8s;
+  }
+}
+
+@keyframes no-width {
+  from {
+    color: transparent;
+    width: 0;
+    border-color: transparent;
+    text-shadow: none;
+  }
+  to {
+    color: white;
+    width: 0;
+    border-color: transparent;
+  }
+}
+
+@keyframes full-width {
+  from {
+    width: 100%;
+  }
+  to {
+    width: 100%;
+  }
+}
+
+/* The typing effect */
+@keyframes typing {
+  from {
+    width: 0;
+  }
+  to {
+    width: 100%;
+  }
+}
+
+/* The typewriter cursor effect */
+@keyframes blink-caret {
+  from,
+  to {
+    border-color: transparent;
+  }
+  50% {
+    border-color: white;
+  }
+}

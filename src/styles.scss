@@ -1,1 +1,12 @@
 /* You can add global styles to this file, and also import other style files */
+
+@import 'assets/scss/reset.scss';
+@import 'assets/scss/variables.scss';
+@import 'assets/scss/mobile-default.scss';
+@media only screen and (min-width: 768px) {
+    @import 'assets/scss/tablet.scss';
+}
+@media only screen and (min-width: 1024px) {
+    @import 'assets/scss/desktop.scss';
+}
+
