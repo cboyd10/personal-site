@@ -1,0 +1,190 @@
+@import '../../assets/scss/variables';
+
+header {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  min-height: 470px;
+  background: $primary-gradient, url("../../assets/images/hero-bg.jpg"), center;
+  background-size: cover;
+  clip-path: polygon(0 0, 100% 0, 100% 70%, 0 80%);
+
+  div.container.clearfix {
+    div.logo-menu-container {
+      padding: 1em 1em;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+
+      #logo {
+        width: 124px;
+
+        img {
+
+        }
+      }
+
+      nav.navbar {
+        display: none;
+
+        a {
+
+          @media only screen and (min-width: 1024px) {
+            display: flex;
+            color: $primary-color;
+            text-decoration: none;
+            text-transform: uppercase;
+            font-weight: $normal-font;
+            font-size: .75em;
+            transition: all 0.2s ease-in-out;
+
+            &:hover {
+              color: $secondary-color;
+              border-bottom: 2px solid $secondary-color;
+            }
+          }
+        }
+
+        @media only screen and (min-width: 1024px) {
+          display: flex;
+          justify-content: space-around;
+          width: 300px;
+        }
+      }
+
+      button#open-nav-btn {
+        @media only screen and (min-width: 1024px) {
+          display: none;
+        }
+      }
+
+      @media only screen and (min-width: 1024px) {
+        padding: 2em 0;
+      }
+    }
+
+    svg#design-hero-text {
+      width: 225px;
+      height: auto;
+      display: block;
+      margin: 0 auto;
+      margin-top: 15vh;
+
+      @media only screen and (min-width: 1024px) {
+        width: 20vw;
+        margin-top: 10vh;
+      }
+    }
+
+    div.type-wrapper {
+      width: 60%;
+      height: auto;
+      margin: 0 auto;
+      text-align: center;
+
+      div.typewriter {
+        div#type {
+          font-family: $ternary-font, monospace;
+          font-size: 52px;
+          font-weight: $light-font;
+          color: $primary-color;
+          height: 110%;
+          overflow: hidden; /* Ensures the content is not revealed until the animation */
+          border-right: 0.08em solid white; /* The typwriter cursor */
+          white-space: nowrap; /* Keeps the content on a single line */
+          margin: 0 auto; /* Gives that scrolling effect as the typing happens */
+          padding-right: 0.1em;
+          animation: no-width 6.1s step-end, typing 1.8s steps(12, end) 6.1s,
+          blink-caret 1.2s ease-in-out 6s infinite, full-width 3s forwards 7.8s;
+
+          @keyframes no-width {
+            from {
+              color: transparent;
+              width: 0;
+              border-color: transparent;
+              text-shadow: none;
+            }
+            to {
+              color: white;
+              width: 0;
+              border-color: transparent;
+            }
+          }
+
+          @keyframes full-width {
+            from {
+              width: 100%;
+            }
+            to {
+              width: 100%;
+            }
+          }
+
+          /* The typing effect */
+          @keyframes typing {
+            from {
+              width: 0;
+            }
+            to {
+              width: 100%;
+            }
+          }
+
+          /* The typewriter cursor effect */
+          @keyframes blink-caret {
+            from,
+            to {
+              border-color: transparent;
+            }
+            50% {
+              border-color: white;
+            }
+          }
+
+          @media only screen and (min-width: 1024px) {
+            font-size: 4.5vw;
+          }
+        }
+      }
+
+      @media only screen and (max-width: 370px) {
+        width: 70%;
+      }
+
+      @media only screen and (min-width: 768px) {
+        width: 30%;
+      }
+
+      @media only screen and (min-width: 1024px) {
+        width: 20vw;
+      }
+    }
+  }
+
+  @media only screen and (min-width: 1024px) {
+    text-align: center;
+    height: 66vh;
+    clip-path: polygon(0 0, 100% 0, 100% 80%, 30% 100%, 0 85%);
+  }
+}
+
+div#collapsed-nav.collapsed-nav {
+  background: #333;
+  opacity: 0.99;
+  height: 150px;
+  width: 120px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  align-content: space-around;
+
+  a {
+    display: inline-block;
+    width: 60%;
+    color: $primary-color;
+    text-decoration: none;
+    padding: 1em 0;
+    font-weight: 300;
+  }
+}

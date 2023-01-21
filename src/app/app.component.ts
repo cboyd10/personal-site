@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { AnimationOptions } from 'ngx-lottie';
+import { SvgService } from './common/svg.service';
 
 @Component({
   selector: 'app-root',
@@ -11,7 +12,11 @@ export class AppComponent {
   designAnimationOptions: AnimationOptions<'svg'> | null = {
     path: '../assets/design/data.json'
   };
-developAnimationOptions: AnimationOptions<"svg">|null = {
+  developAnimationOptions: AnimationOptions<'svg'> | null = {
     path: '../assets/develop/data.json'
-};
+  };
+
+  public constructor(private svgService: SvgService) {
+  }
+
 }

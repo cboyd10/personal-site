@@ -5,6 +5,10 @@ import player from 'lottie-web';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { HomeHeaderComponent } from './home-header/home-header.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { SvgService } from './common/svg.service';
+import { HttpClientModule } from '@angular/common/http';
 
 export function playerFactory() {
   return player;
@@ -17,9 +21,14 @@ export function playerFactory() {
   imports: [
     BrowserModule,
     AppRoutingModule,
-    LottieModule.forRoot({player: playerFactory})
+    HttpClientModule,
+    LottieModule.forRoot({player: playerFactory}),
+    HomeHeaderComponent,
+    BrowserAnimationsModule
   ],
-  providers: [],
+  providers: [
+    SvgService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
