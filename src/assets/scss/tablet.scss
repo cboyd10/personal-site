@@ -1,92 +1,18 @@
-#scroll-btn {
-    top: 72vh;
-}
-
-/* Main */
-
-main {
-    box-sizing: border-box;
-    width: 100%;
-    height: auto;
-    padding: 0 25px;
-    text-align: left;
-    margin-top: 150px;
-    .container:first-of-type {
-        height: auto;
-        min-height: 350px;
-        position: relative;
-        img {
-            padding-top: 50px;
-            width: 38%;
-            float: left;
-        }
-        div {
-            width: 30% !important;
-            position: absolute;
-            top: -8%;
-            left: 5%;
-            z-index: 2;
-        }
-        h1 {
-            width: 53.5%;
-            float: right;
-            font-size: 2.5em;
-            margin: 40px 0 10px 0;
-        }
-        p {
-            float: right;
-            font-size: 14px;
-            line-height: 32px;
-            width: 385px;
-            margin-left: 50px;
-        }
-    }
-    .container:nth-of-type(2) {
-        height: auto;
-        padding: 0;
-        margin-top: 50px;
-        img {
-            width: 38%;
-            float: right;
-            margin-top: 125px;
-        }
-        div {
-            width: 30% !important;
-            position: absolute;
-            top: 25%;
-            left: 68%;
-            z-index: 2;
-        }
-        h1 {
-            width: 45%;
-            float: left;
-            font-size: 2.5em;
-            margin: 120px 0 10px 0;
-        }
-        p {
-            float: left;
-            font-family: 'Noto Sans', sans-serif;
-            font-size: 14px;
-            line-height: 32px;
-            width: 355px;
-            margin-right: 78px;
-        }
-    }
-} // end main
-
 /* Footer */
 
 footer {
-    h1 {
-        font-size: 5em;
-    }
-    #contact-btn {
-        font-size: 1em;
-        padding: 1.25em 2em;
-    }
-    #copyright {
-        margin-top: 15%;
-    }
+  h1 {
+    font-size: 5em;
+  }
+
+  #contact-btn {
+    font-size: 1em;
+    padding: 1.25em 2em;
+  }
+
+  #copyright {
+    margin-top: 15%;
+  }
 }
 
 @import 'contact/_contact-tablet.scss';
