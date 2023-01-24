@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { AnimationOptions, LottieComponent } from 'ngx-lottie';
 import { HomeHeaderComponent } from './home-header/home-header.component';
+import { HomeFooterComponent } from './home-footer/home-footer.component';
 
 @Component({
   selector: 'app-home',
@@ -8,7 +9,8 @@ import { HomeHeaderComponent } from './home-header/home-header.component';
   styleUrls: ['./home.component.scss'],
   imports: [
     HomeHeaderComponent,
-    LottieComponent
+    LottieComponent,
+    HomeFooterComponent
   ],
   standalone: true
 })
