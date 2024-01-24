@@ -19,10 +19,6 @@ header {
 
       #logo {
         width: 124px;
-
-        img {
-
-        }
       }
 
       nav.navbar {
@@ -50,6 +46,7 @@ header {
           display: flex;
           justify-content: space-around;
           width: 300px;
+          min-height: 14px;
         }
       }
 
@@ -60,7 +57,7 @@ header {
       }
 
       @media only screen and (min-width: 1024px) {
-        padding: 2em 0;
+        padding: 2em 2em;
       }
     }
 

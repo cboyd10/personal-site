@@ -1,12 +1,14 @@
 @import '../../assets/scss/variables';
 
 
-a#scroll-btn {
+button#scroll-btn {
   display: inline-block;
   position: absolute;
   top: 72%;
   left: 50vw;
   transform: translate(-50%);
+  background: none;
+  border: none;
 
   @media only screen and (min-width: 768px) {
     top: 72vh;

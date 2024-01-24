@@ -7,26 +7,30 @@ import { HomeFooterComponent } from './home-footer/home-footer.component';
   selector: 'app-home',
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss'],
-  imports: [
-    HomeHeaderComponent,
-    LottieComponent,
-    HomeFooterComponent
-  ],
-  standalone: true
+  imports: [HomeHeaderComponent, LottieComponent, HomeFooterComponent],
+  standalone: true,
 })
 export class HomeComponent {
+  public scrollToTarget(target: HTMLElement): void {
+    target.scrollIntoView({
+      behavior: 'smooth',
+      block: 'start',
+      inline: 'nearest',
+    });
+  }
+
   public designAnimationOptions: AnimationOptions = {
-    path: '../assets/design/data.json'
+    path: '../assets/design/data.json',
   };
 
   public designAnimationStyles: Partial<CSSStyleDeclaration> = {
     backgroundImage: `url('../../assets/images/design-content-holder.svg')`,
     backgroundSize: 'contain',
-    backgroundRepeat: 'no-repeat'
+    backgroundRepeat: 'no-repeat',
   };
 
   public developAnimationOptions: AnimationOptions = {
-    path: '../assets/develop/data.json'
+    path: '../assets/develop/data.json',
   };
 
   public getDesignAnimationStyles(): Partial<CSSStyleDeclaration> {
@@ -34,7 +38,7 @@ export class HomeComponent {
       return {
         backgroundImage: `url('../../assets/images/design-content-holder.svg')`,
         backgroundSize: 'contain',
-        backgroundRepeat: 'no-repeat'
+        backgroundRepeat: 'no-repeat',
       };
     }
 
@@ -42,7 +46,7 @@ export class HomeComponent {
       width: '90%',
       backgroundImage: `url('../../assets/images/design-content-holder.svg')`,
       backgroundSize: 'contain',
-      backgroundRepeat: 'no-repeat'
+      backgroundRepeat: 'no-repeat',
     };
   }
 
@@ -51,7 +55,7 @@ export class HomeComponent {
       return {
         backgroundImage: `url('../../assets/images/develop-content-holder.svg')`,
         backgroundSize: 'contain',
-        backgroundRepeat: 'no-repeat'
+        backgroundRepeat: 'no-repeat',
       };
     }
 
@@ -59,7 +63,7 @@ export class HomeComponent {
       width: '90%',
       backgroundImage: `url('../../assets/images/develop-content-holder.svg')`,
       backgroundSize: 'contain',
-      backgroundRepeat: 'no-repeat'
+      backgroundRepeat: 'no-repeat',
     };
   }
 }
