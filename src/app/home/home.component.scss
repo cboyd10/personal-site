@@ -1,8 +1,6 @@
-@import '../../assets/scss/variables';
-
+@import "../../assets/scss/variables";
 
 button#scroll-btn {
-  display: inline-block;
   position: absolute;
   top: 72%;
   left: 50vw;
@@ -28,7 +26,6 @@ main#content-start {
   scroll-behavior: smooth;
 
   div#design-content-container {
-
     div#design-animation-container {
       @media only screen and (min-width: 768px) {
         width: 40%;
@@ -58,7 +55,7 @@ main#content-start {
         width: 50%;
         display: flex;
         flex-direction: column;
-        justify-content: center;;
+        justify-content: center;
       }
     }
 
@@ -113,7 +110,7 @@ main#content-start {
         width: 50%;
         display: flex;
         flex-direction: column;
-        justify-content: center;;
+        justify-content: center;
       }
     }
 
