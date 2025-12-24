@@ -1,0 +1,27 @@
+{
+  "name": "personal-site",
+  "version": "1.0.0",
+  "main": "terminal.js",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cboyd10/personal-site.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/cboyd10/personal-site/issues"
+  },
+  "homepage": "https://github.com/cboyd10/personal-site#readme",
+  "description": "",
+  "devDependencies": {
+    "terser": "^5.44.1",
+    "ttf2woff2": "^8.0.0",
+    "vite": "^7.3.0"
+  }
+}

@@ -23,9 +23,10 @@
             <span class="cursor"></span>
         </div>
     </div>
-    <script src="terminal.js"></script>
-    <script>
-        function handleCommand(command) {
+    <script type="module">
+        import { initTerminal, handleDefaultCommands, handleInvalidInput } from './terminal.js';
+
+        window.handleCommand = function(command) {
             if (command === "") {
                 window.location.href = 'index.html';
                 return;

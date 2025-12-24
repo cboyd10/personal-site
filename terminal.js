@@ -5,7 +5,6 @@ const toggleOn = document.getElementById('toggle-on');
 const toggleOff = document.getElementById('toggle-off');
 const toggleLabel = document.querySelector('.toggle-label');
 
-// Load preference from localStorage
 let skipAnimationPref = localStorage.getItem('skipAnimation') === 'true';
 
 function updateToggleUI() {
@@ -44,7 +43,7 @@ async function loadConfig() {
     }
 }
 
-async function initTerminal(pageKey) {
+export async function initTerminal(pageKey) {
     const config = await loadConfig();
     if (!config) return;
 
@@ -102,7 +101,6 @@ function showAllInstantly() {
     lineIndex = terminalLines.length; // Ensure typeLine loop stops
     const container = document.querySelector('.terminal-output');
     if (container) container.scrollTop = container.scrollHeight;
-    console.log('Animation skipped. Content loaded instantly.');
 }
 
 function typeLine() {
@@ -144,7 +142,6 @@ function typeLine() {
         }
     } else {
         isTyping = false;
-        console.log('Typing finished. Input enabled.');
     }
 }
 
@@ -155,13 +152,14 @@ window.addEventListener('keydown', (e) => {
         e.preventDefault();
     }
 
-    console.log(`Key pressed: ${e.key}`);
 
     if (e.key === 'Enter') {
         const command = userInputSpan.textContent.trim();
         userInputSpan.textContent = '';
         
-        handleCommand(command);
+        if (typeof window.handleCommand === 'function') {
+            window.handleCommand(command);
+        }
         
     } else if (e.key === 'Backspace') {
         userInputSpan.textContent = userInputSpan.textContent.slice(0, -1);
@@ -173,7 +171,7 @@ window.addEventListener('keydown', (e) => {
     if (container) container.scrollTop = container.scrollHeight;
 });
 
-function handleDefaultCommands(command) {
+export function handleDefaultCommands(command) {
     if (command.toUpperCase() === 'CLEAR') {
         clearConsole();
         return true;
@@ -196,9 +194,8 @@ function handleDefaultCommands(command) {
     return false;
 }
 
-function handleInvalidInput(command) {
+export function handleInvalidInput(command) {
     // Handle invalid input
-    console.warn(`Invalid option entered: "${command}"`);
     writeToConsole(`> ${command}`);
     writeToConsole("Invalid option. Please try again.");
 }
