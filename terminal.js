@@ -5,6 +5,19 @@ const toggleOn = document.getElementById('toggle-on');
 const toggleOff = document.getElementById('toggle-off');
 const toggleLabel = document.querySelector('.toggle-label');
 
+// Create hidden input for mobile keyboard support
+const hiddenInput = document.createElement('input');
+hiddenInput.type = 'text';
+hiddenInput.style.position = 'absolute';
+hiddenInput.style.opacity = '0';
+hiddenInput.style.pointerEvents = 'none';
+hiddenInput.style.left = '-9999px';
+hiddenInput.autocomplete = 'off';
+hiddenInput.autocorrect = 'off';
+hiddenInput.autocapitalize = 'off';
+hiddenInput.spellcheck = false;
+document.body.appendChild(hiddenInput);
+
 let skipAnimationPref = localStorage.getItem('skipAnimation') === 'true';
 
 function updateToggleUI() {
@@ -107,6 +120,7 @@ function showAllInstantly() {
     lineIndex = terminalLines.length; // Ensure typeLine loop stops
     const container = document.querySelector('.terminal-output');
     if (container) container.scrollTop = container.scrollHeight;
+    hiddenInput.focus();
 }
 
 function typeLine() {
@@ -148,33 +162,39 @@ function typeLine() {
         }
     } else {
         isTyping = false;
+        hiddenInput.focus();
     }
 }
 
-window.addEventListener('keydown', (e) => {
+// Synchronize hidden input with visual terminal
+hiddenInput.addEventListener('input', () => {
+    userInputSpan.textContent = hiddenInput.value;
+    const container = document.querySelector('.terminal-output');
+    if (container) container.scrollTop = container.scrollHeight;
+});
+
+hiddenInput.addEventListener('keydown', (e) => {
     if (isTyping) return;
 
-    if (['Enter', 'Backspace', ' '].includes(e.key)) {
-        e.preventDefault();
-    }
-
-
     if (e.key === 'Enter') {
-        const command = userInputSpan.textContent.trim();
+        const command = hiddenInput.value.trim();
+        hiddenInput.value = '';
         userInputSpan.textContent = '';
         
         if (typeof window.handleCommand === 'function') {
             window.handleCommand(command);
         }
         
-    } else if (e.key === 'Backspace') {
-        userInputSpan.textContent = userInputSpan.textContent.slice(0, -1);
-    } else if (e.key.length === 1) {
-        userInputSpan.textContent += e.key;
+        const container = document.querySelector('.terminal-output');
+        if (container) container.scrollTop = container.scrollHeight;
     }
-    
-    const container = document.querySelector('.terminal-output');
-    if (container) container.scrollTop = container.scrollHeight;
+});
+
+// Focus hidden input on any click to ensure mobile keyboard stays active/available
+document.addEventListener('click', () => {
+    if (!isTyping) {
+        hiddenInput.focus();
+    }
 });
 
 export function handleDefaultCommands(command) {
@@ -216,6 +236,7 @@ function writeToConsole(string) {
     p.textContent = `${string}`;
     output.appendChild(p);
     userInputSpan.textContent = '';
+    hiddenInput.value = '';
     consoleTextToClear.push(p);
 }
 

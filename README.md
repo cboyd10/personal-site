@@ -46,6 +46,18 @@ npm run dev
 
 The site will be available at `http://localhost:5173`.
 
+### WSL & Mobile Testing (LAN Access)
+
+If you are running the project inside **WSL** and want to access the development server from a mobile device or another computer on your Local Area Network (LAN):
+
+1. Ensure Vite is listening on all interfaces (`host: true` is already configured in `vite.config.js`).
+2. Open **PowerShell** with **Administrative Privileges** on your Windows host.
+3. Run the included proxy script:
+   ```powershell
+   .\wsl-vite-proxy.ps1
+   ```
+This script sets up a port-proxy from your Windows host to the WSL instance, making the terminal accessible on your LAN.
+
 ## 📝 Content Management
 
 The site uses a "headless" approach where the structure and content are separated. All content is managed in `public/config.json`.
