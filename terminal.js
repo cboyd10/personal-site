@@ -22,6 +22,12 @@ function updateToggleUI() {
 
 updateToggleUI();
 
+// Set copyright year
+const yearSpan = document.getElementById('copyright-year');
+if (yearSpan) {
+    yearSpan.textContent = new Date().getFullYear();
+}
+
 let lineIndex = 0;
 let charIndex = 0;
 let isTyping = true;
