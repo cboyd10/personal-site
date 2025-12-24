@@ -89,12 +89,6 @@ p {
     position: relative;
     overflow: hidden;
     box-sizing: border-box;
-    /*!* Ensure the container doesn't expand beyond its fixed width *!*/
-    /*min-width: 0;*/
-    /*!* Use flex-shrink to ensure it stays within the viewport *!*/
-    /*flex-shrink: 1;*/
-    /*!* Ensure it doesn't grow beyond 85vw even if content wants to *!*/
-    /*flex-basis: 85vw;*/
 }
 
 @media (max-width: 768px) {
