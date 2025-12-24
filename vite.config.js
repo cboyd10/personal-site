@@ -16,12 +16,30 @@ export default defineConfig({
         {
             name: 'minify-json',
             closeBundle() {
-                // Minify config.json after copying it to dist/config.json
-                const configPath = resolve(__dirname, 'dist/config.json');
-                if (fs.existsSync(configPath)) {
-                    const configContent = fs.readFileSync(configPath, 'utf-8');
-                    const minified = JSON.stringify(JSON.parse(configContent));
-                    fs.writeFileSync(configPath, minified);
+                const distDir = resolve(__dirname, 'dist');
+
+                // Recursive function to minify JSON files in the `dist` directory
+                const minifyRecursive = (dir) => {
+                    const files = fs.readdirSync(dir);
+                    files.forEach(file => {
+                        const filePath = resolve(dir, file);
+                        const stat = fs.statSync(filePath);
+                        if (stat.isDirectory()) {
+                            minifyRecursive(filePath);
+                        } else if (file.endsWith('.json')) {
+                            const content = fs.readFileSync(filePath, 'utf-8');
+                            try {
+                                const minified = JSON.stringify(JSON.parse(content));
+                                fs.writeFileSync(filePath, minified);
+                            } catch (e) {
+                                console.error(`Failed to minify ${filePath}:`, e);
+                            }
+                        }
+                    });
+                };
+
+                if (fs.existsSync(distDir)) {
+                    minifyRecursive(distDir);
                 }
             },
         },
