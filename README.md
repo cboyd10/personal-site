@@ -1,27 +1,124 @@
-# PersonalSite
+# Terminal Portfolio
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 15.1.2.
+A retro, terminal-themed personal website designed with a focus on performance, aesthetics, and ease of content management. The site mimics an old CRT monitor with a scanline effect, a blinking block cursor, and a warm autumn-inspired color palette.
 
-## Development server
+![Terminal Theme](https://img.shields.io/badge/Theme-Terminal-9b2d2d)
+![License](https://img.shields.io/badge/License-ISC-blue)
+![Vite](https://img.shields.io/badge/Build-Vite-646CFF)
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+## 🚀 Features
 
-## Code scaffolding
+- **Retro Aesthetic**: Old-school terminal look with scanline effects and a customizable warm charcoal/burgundy color scheme.
+- **Interactive Terminal**: Simulated typing animations and a functional command-line interface for navigation.
+- **CMS-Driven Content**: Manage all text, menu items, and ASCII art via a single `config.json` file—no HTML/JS changes required for content updates.
+- **Performance Optimized**: Initial page load is <14KB (minified and gzipped, excluding fonts).
+- **Mobile Responsive**: Adapts seamlessly to mobile devices in portrait orientation without scrolling issues.
+- **Animation Control**: A persistent toggle to enable or disable typing animations for returning visitors.
+- **Custom Scrollbar**: Themed scrollbars that integrate perfectly with the retro design.
+- **Dynamic Footer**: Automatically updating copyright footer to keep the site current.
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+## 🛠️ Getting Started
 
-## Build
+### Prerequisites
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+- [Node.js](https://nodejs.org/) (v18 or higher recommended)
+- npm (v9 or higher)
 
-## Running unit tests
+### Installation
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/cboyd10/personal-site.git
+   cd personal-site
+   ```
 
-## Running end-to-end tests
+2. Install dependencies:
+   ```bash
+   npm install
+   ```
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+### Development
 
-## Further help
+Run the development server with Hot Module Replacement (HMR):
+```bash
+npm run dev
+```
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+The site will be available at `http://localhost:5173`.
+
+## 📝 Content Management
+
+The site uses a "headless" approach where the structure and content are separated. All content is managed in `public/config.json`.
+
+### Updating the Menu
+
+Add or modify items in the `menu` array. Each item supports:
+- `label`: The text displayed in the menu.
+- `type`: `internal` (links to a file like `about.html`) or `external` (opens in a new tab).
+- `url`: The destination link.
+
+```json
+{
+  "label": "GitHub",
+  "type": "external",
+  "url": "https://github.com/cboyd10"
+}
+```
+
+### Adding Pages
+
+1. Create a new HTML file (e.g., `projects.html`) by copying `about.html`.
+2. Update the script tag to initialize with your new page key: `initTerminal('projects')`.
+3. Add the page configuration to the `pages` object in `config.json`:
+
+```json
+{
+  "projects": {
+    "title": "Projects - Chris Boyd",
+    "initialLines": ["Loading project list...", " "],
+    "content": [
+      "Project 1: Terminal Site",
+      "Description goes here...",
+      " ",
+      "Press ENTER to return"
+    ]
+  }
+}
+```
+
+### ASCII Art
+
+The `asciiArt` field in `config.json` accepts an array of strings. For multi-line art, use a single string with `\n` characters or multiple entries in the array.
+
+## 🏗️ Build Process
+
+The project uses [Vite](https://vitejs.dev/) for an optimized production build.
+
+### Production Build
+
+```bash
+npm run build
+```
+
+This command generates a `dist` folder containing:
+- Minified JavaScript and CSS.
+- Optimized and inlined SVGs.
+- **Automatically Minified JSON**: A custom Vite plugin minifies all JSON files in the `dist` directory to save every possible byte.
+- Converted `woff2` fonts for maximum compression.
+
+### Target Size
+
+The build is fine-tuned to keep the core assets (HTML, JS, CSS, JSON) under **14KB**, making it extremely fast even on slow connections.
+
+## 📂 Project Structure
+
+- `index.html` / `about.html`: Page templates.
+- `style.css`: Global retro styles and animations.
+- `terminal.js`: The core terminal engine (ES Module).
+- `public/config.json`: The source of truth for all content.
+- `assets/`: Icons and fonts.
+- `vite.config.js`: Build configuration and custom minification plugins.
+
+## 📜 License
+
+This project is licensed under the ISC License.

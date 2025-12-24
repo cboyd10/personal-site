@@ -1,0 +1,242 @@
+@font-face {
+    font-family: 'VT323';
+    src: url('assets/fonts/VT323-Regular.woff2') format('woff2');
+    font-weight: 500;
+    font-style: normal;
+}
+
+body {
+    background-color: #1c1b1b;
+    color: #9c3d3d;
+    font-family: 'VT323', 'Courier New', Courier, monospace;
+    font-size: 1.2em;
+    margin: 0;
+    padding: 20px 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100vh;
+    width: 100vw;
+    box-sizing: border-box;
+}
+
+.controls {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 10;
+}
+
+.toggle-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    cursor: pointer;
+    background: rgba(28, 27, 27, 0.8);
+    padding: 5px;
+    border-radius: 5px;
+    border: 1px solid #4a3f3f;
+    position: relative;
+    width: fit-content;
+}
+
+.toggle-icon {
+    width: 32px;
+    height: 32px;
+    filter: invert(90%) sepia(72%) saturate(1121%) hue-rotate(326deg) brightness(112%) contrast(81%);
+    display: block;
+}
+
+.toggle-label {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    margin-top: 10px;
+    background: rgba(28, 27, 27, 0.9);
+    padding: 5px 10px;
+    border: 1px solid #4a3f3f;
+    border-radius: 4px;
+    font-size: 0.8em;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    white-space: nowrap;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.2s ease-in-out, transform 0.2s ease-in-out;
+    z-index: 20;
+}
+
+.toggle-container:hover .toggle-label {
+    opacity: 1;
+    transform: translateY(5px);
+}
+
+p {
+    min-height: 1em;
+}
+
+.terminal-container {
+    width: 85vw;
+    max-width: min(85vw, 1440px);
+    height: 85vh;
+    border: 2px solid #4a3f3f;
+    padding: 20px;
+    background: rgba(25, 25, 25, 0.6);
+    box-shadow: 0 0 20px rgba(155, 45, 45, 0.2);
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    overflow: hidden;
+    box-sizing: border-box;
+    margin-bottom: 20px;
+}
+
+@media (max-width: 768px) {
+    body {
+        justify-content: flex-start;
+        padding: 0;
+        box-sizing: border-box;
+        overflow-y: auto;
+    }
+
+    .controls {
+        top: 10px;
+        right: 10px;
+    }
+
+    .terminal-container {
+        width: 100%;
+        height: auto;
+        min-height: calc(100vh - 60px);
+        margin: 0;
+        padding: 10px;
+        border: none;
+        box-shadow: none;
+        margin-bottom: 0;
+    }
+
+    .terminal-output pre {
+        font-size: 1.8vw;
+        line-height: 1.1;
+        letter-spacing: -1px;
+    }
+
+    .terminal-output p, .input-line {
+        font-size: 14px;
+    }
+
+    .cursor {
+        width: 8px;
+        height: 16px;
+    }
+}
+
+.terminal-container::before {
+    content: " ";
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background: linear-gradient(rgba(43, 38, 38, 0) 50%, rgba(0, 0, 0, 0.1) 50%), linear-gradient(90deg, rgba(155, 45, 45, 0.03), rgba(255, 100, 0, 0.01), rgba(155, 45, 45, 0.03));
+    z-index: 2;
+    background-size: 100% 2px, 3px 100%;
+    pointer-events: none;
+}
+
+.terminal-output {
+    flex-grow: 1;
+    overflow-y: auto;
+    overflow-x: hidden;
+    /* Ensure the output area itself doesn't force width expansion */
+    width: 100%;
+    min-width: 0;
+}
+
+/* Custom Scrollbar Styling */
+.terminal-output::-webkit-scrollbar {
+    width: 8px;
+}
+
+.terminal-output::-webkit-scrollbar-track {
+    background: #1c1b1b;
+    border-left: 1px solid #4a3f3f;
+}
+
+.terminal-output::-webkit-scrollbar-thumb {
+    background: #4a3f3f;
+    border: 1px solid #1c1b1b;
+}
+
+.terminal-output::-webkit-scrollbar-thumb:hover {
+    background: #9b2d2d;
+}
+
+.terminal-output pre {
+    margin: 0;
+    font-family: 'JetBrains Mono', monospace;
+    white-space: pre;
+    font-size: clamp(4px, 0.95vw, 14px);
+    letter-spacing: -0.05em;
+    max-width: 100%;
+    overflow-x: hidden;
+    /* Ensure pre tags don't force parent width */
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.terminal-output p {
+    margin: 5px 0;
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+    /* Extra insurance against horizontal expansion */
+    max-width: 100%;
+}
+
+.input-line {
+    display: flex;
+    align-items: center;
+    margin-top: 10px;
+}
+
+#user-input {
+    white-space: pre-wrap;
+    overflow-wrap: break-word;
+}
+
+.prompt {
+    margin-right: 10px;
+}
+
+.cursor {
+    width: 10px;
+    height: 20px;
+    background-color: #9b2d2d;
+    animation: blink 1s step-end infinite;
+}
+
+@keyframes blink {
+    from, to {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0;
+    }
+}
+
+.footer {
+    width: 100%;
+    text-align: center;
+    font-size: 0.8em;
+    color: #4a3f3f;
+    z-index: 5;
+    pointer-events: none;
+    padding-bottom: 20px;
+    margin-top: auto;
+}
+
+.footer p {
+    margin: 0;
+    min-height: auto;
+}
