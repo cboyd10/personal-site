@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chris Boyd</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="controls">
+        <div id="animation-toggle" class="toggle-container">
+            <img src="assets/toggle_on.svg" id="toggle-on" alt="Animations On" class="toggle-icon">
+            <img src="assets/toggle_off.svg" id="toggle-off" alt="Animations Off" class="toggle-icon" style="display: none;">
+            <span class="toggle-label">Typing Animation</span>
+        </div>
+    </div>
+    <div class="terminal-container">
+        <div class="terminal-output" id="output">
+        </div>
+        <div class="input-line">
+            <span class="prompt">></span>
+            <span id="user-input"></span>
+            <span class="cursor"></span>
+        </div>
+    </div>
+    <script src="terminal.js"></script>
+    <script>
+        function handleCommand(command) {
+            if (!command) return;
+            if (handleDefaultCommands(command)) return;
+
+            handleInvalidInput(command);
+        }
+
+        initTerminal('home');
+    </script>
+</body>
+</html>
